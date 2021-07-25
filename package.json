@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode=production"
+    "build": "webpack --mode=production",
+    "start": "webpack serve --mode=production --open"
   },
   "devDependencies": {
     "@babel/core": "^7.14.8",
