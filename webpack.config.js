@@ -8,7 +8,8 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: "bundle.js",
         environment: {
-            arrowFunction: false
+            arrowFunction: false,
+            const: false
         }
     },
     module: {
