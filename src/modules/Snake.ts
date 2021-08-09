@@ -18,10 +18,22 @@ class Snake {
     }
 
     set X(value) {
+        if (this.X === value) {
+            return
+        }
+        if (value < 0 || value > 290) {
+            throw new Error("GAME OVER!")
+        }
         this.head.style.left = value + 'px'
     }
 
     set Y(value) {
+        if (this.Y === value) {
+            return
+        }
+        if (value < 0 || value > 290) {
+            throw new Error("GAME OVER!")
+        }
         this.head.style.top = value + 'px'
     }
 

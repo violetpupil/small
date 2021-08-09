@@ -46,9 +46,24 @@ class GameControl {
                 X += 10
                 break
         }
-        this.snake.X = X
-        this.snake.Y = Y
+        this.checkEat(X, Y)
+
+        try {
+            this.snake.X = X
+            this.snake.Y = Y
+        } catch (e) {
+            alert(e.message)
+            this.isLive = false
+        }
         this.isLive && setTimeout(this.run.bind(this), 330 - this.scorePanel.level * 30)
+    }
+
+    checkEat(X: number, Y: number) {
+        if (X === this.food.X && Y === this.food.Y) {
+            this.food.change()
+            this.scorePanel.addScore()
+            this.snake.addBody()
+        }
     }
 }
 
