@@ -42,3 +42,10 @@ def update_screen(ai_settings, screen, ship, bullets: Group):
         bullet.draw_bullet()
     ship.blitme()
     pygame.display.flip()
+
+
+def update_bullets(bullets):
+    bullets.update()
+    for bullet in bullets.copy():
+        if bullet.rect.bottom <= 0:
+            bullets.remove(bullet)
