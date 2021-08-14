@@ -1,12 +1,11 @@
 import pygame
 from pygame.sprite import Sprite
-from pygame.surface import Surface
 
 from settings import Settings
 
 
 class Alien(Sprite):
-    def __init__(self, ai_settings: Settings, screen: Surface):
+    def __init__(self, ai_settings: Settings, screen):
         super().__init__()
         self.screen = screen
         self.ai_settings = ai_settings

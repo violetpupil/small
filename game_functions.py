@@ -1,7 +1,6 @@
 import sys
 
 import pygame
-from pygame.sprite import Group
 
 from alien import Alien
 from bullet import Bullet
@@ -89,5 +88,5 @@ def create_fleet(ai_settings, screen, ship: Ship, aliens):
             create_alien(ai_settings, screen, aliens, alien_number, row_number)
 
 
-def update_aliens(aliens: Group):
+def update_aliens(aliens):
     aliens.update()
