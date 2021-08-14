@@ -43,7 +43,7 @@ def check_events(ai_settings, screen, ship: Ship, bullets):
             check_keyup_events(event, ship)
 
 
-def update_screen(ai_settings, screen, ship, aliens: Group, bullets: Group):
+def update_screen(ai_settings, screen, ship: Ship, aliens, bullets):
     screen.fill(ai_settings.bg_color)
     for bullet in bullets.sprites():
         bullet.draw_bullet()
