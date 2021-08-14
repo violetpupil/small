@@ -122,8 +122,8 @@ def change_fleet_direction(ai_settings: Settings, aliens):
 
 
 def ship_hit(ai_settings, stats: GameStats, screen, ship, aliens, bullets):
+    stats.ships_left -= 1
     if stats.ships_left > 0:
-        stats.ships_left -= 1
         aliens.empty()
         bullets.empty()
         create_fleet(ai_settings, screen, ship, aliens)
