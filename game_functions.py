@@ -6,6 +6,7 @@ import pygame
 from alien import Alien
 from bullet import Bullet
 from game_stats import GameStats
+from scoreboard import Scoreboard
 from settings import Settings
 from ship import Ship
 
@@ -61,12 +62,13 @@ def check_play_button(ai_settings: Settings, screen, stats: GameStats, play_butt
         ship.center_ship()
 
 
-def update_screen(ai_settings, screen, stats, ship: Ship, aliens, bullets, play_button):
+def update_screen(ai_settings, screen, stats, sb: Scoreboard, ship: Ship, aliens, bullets, play_button):
     screen.fill(ai_settings.bg_color)
     for bullet in bullets.sprites():
         bullet.draw_bullet()
     ship.blitme()
     aliens.draw(screen)
+    sb.show_score()
     if not stats.game_active:
         play_button.draw_button()
     pygame.display.flip()
