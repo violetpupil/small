@@ -35,7 +35,7 @@ def check_keyup_events(event, ship):
         ship.moving_left = False
 
 
-def check_events(ai_settings, screen, stats, play_button, ship: Ship, aliens, bullets):
+def check_events(ai_settings, screen, stats, sb, play_button, ship: Ship, aliens, bullets):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
@@ -45,10 +45,10 @@ def check_events(ai_settings, screen, stats, play_button, ship: Ship, aliens, bu
             check_keyup_events(event, ship)
         elif event.type == pygame.MOUSEBUTTONDOWN:
             mouse_x, mouse_y = pygame.mouse.get_pos()
-            check_play_button(ai_settings, screen, stats, play_button, ship, aliens, bullets, mouse_x, mouse_y)
+            check_play_button(ai_settings, screen, stats, sb, play_button, ship, aliens, bullets, mouse_x, mouse_y)
 
 
-def check_play_button(ai_settings: Settings, screen, stats: GameStats, play_button, ship,
+def check_play_button(ai_settings: Settings, screen, stats: GameStats, sb, play_button, ship,
                       aliens, bullets, mouse_x, mouse_y):
     button_clicked = play_button.rect.collidepoint(mouse_x, mouse_y)
     if button_clicked and not stats.game_active:
@@ -56,6 +56,9 @@ def check_play_button(ai_settings: Settings, screen, stats: GameStats, play_butt
         pygame.mouse.set_visible(False)
         stats.reset_stats()
         stats.game_active = True
+        sb.prep_score()
+        sb.prep_high_score()
+        sb.prep_level()
         aliens.empty()
         bullets.empty()
         create_fleet(ai_settings, screen, ship, aliens)
@@ -94,6 +97,8 @@ def check_bullet_alien_collisions(ai_settings: Settings, screen, stats: GameStat
     if len(aliens) == 0:
         bullets.empty()
         ai_settings.increase_speed()
+        stats.level += 1
+        sb.prep_level()
         create_fleet(ai_settings, screen, ship, aliens)
 
 
