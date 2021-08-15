@@ -74,16 +74,20 @@ def update_screen(ai_settings, screen, stats, sb: Scoreboard, ship: Ship, aliens
     pygame.display.flip()
 
 
-def update_bullets(ai_settings, screen, ship, aliens, bullets):
+def update_bullets(ai_settings, screen, stats, sb, ship, aliens, bullets):
     bullets.update()
     for bullet in bullets.copy():
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
-    check_bullet_alien_collisions(ai_settings, screen, ship, aliens, bullets)
+    check_bullet_alien_collisions(ai_settings, screen, stats, sb, ship, aliens, bullets)
 
 
-def check_bullet_alien_collisions(ai_settings: Settings, screen, ship, aliens, bullets):
-    pygame.sprite.groupcollide(bullets, aliens, True, True)
+def check_bullet_alien_collisions(ai_settings: Settings, screen, stats: GameStats, sb: Scoreboard, ship, aliens,
+                                  bullets):
+    collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
+    if collisions:
+        stats.score += ai_settings.alien_points
+        sb.prep_score()
     if len(aliens) == 0:
         bullets.empty()
         ai_settings.increase_speed()
