@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-from learning_logs.forms import TopicForm
+from learning_logs.forms import TopicForm, EntryForm
 from learning_logs.models import Topic
 
 
@@ -33,3 +33,19 @@ def new_topic(request):
 
     context = {'form': form}
     return render(request, 'learning_logs/new_topic.html', context)
+
+
+def new_entry(request, topic_id):
+    t = Topic.objects.get(id=topic_id)
+    if request.method != "POST":
+        form = EntryForm()
+    else:
+        form = EntryForm(request.POST)
+        if form.is_valid():
+            entry = form.save(commit=False)
+            entry.topic = t
+            entry.save()
+            return HttpResponseRedirect(reverse('learning_logs:topic', args=[topic_id]))
+
+    context = {'topic': t, 'form': form}
+    return render(request, 'learning_logs/new_entry.html', context)
