@@ -6,3 +6,7 @@ from django.urls import reverse
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse('learning_logs:index'))
+
+
+def register():
+    pass
