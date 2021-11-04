@@ -1,7 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect
-from django.shortcuts import render
-from django.urls import reverse
+from django.shortcuts import render, redirect
 
 from learning_logs.forms import TopicForm, EntryForm
 from learning_logs.models import Topic, Entry
@@ -31,7 +29,7 @@ def new_topic(request):
         form = TopicForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('learning_logs:topics'))
+            return redirect('learning_logs:topics')
 
     context = {'form': form}
     return render(request, 'learning_logs/new_topic.html', context)
@@ -47,7 +45,7 @@ def new_entry(request, topic_id):
             entry = form.save(commit=False)
             entry.topic = t
             entry.save()
-            return HttpResponseRedirect(reverse('learning_logs:topic', args=[topic_id]))
+            return redirect('learning_logs:topic', topic_id)
 
     context = {'topic': t, 'form': form}
     return render(request, 'learning_logs/new_entry.html', context)
@@ -62,7 +60,7 @@ def edit_entry(request, entry_id):
         form = EntryForm(instance=entry, data=request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('learning_logs:topic', args=[t.id]))
+            return redirect('learning_logs:topic', t.id)
 
     context = {'entry': entry, 'topic': t, 'form': form}
     return render(request, 'learning_logs/edit_entry.html', context)
