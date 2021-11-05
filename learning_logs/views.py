@@ -11,7 +11,7 @@ def index(request):
 
 @login_required
 def topics(request):
-    context = {'topics': Topic.objects.order_by('date_added')}
+    context = {'topics': Topic.objects.filter(owner=request.user).order_by('date_added')}
     return render(request, 'learning_logs/topics.html', context)
 
 
