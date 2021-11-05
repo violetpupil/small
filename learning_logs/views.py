@@ -33,7 +33,9 @@ def new_topic(request):
     else:
         form = TopicForm(request.POST)
         if form.is_valid():
-            form.save()
+            new_t = form.save(commit=False)
+            new_t.owner = request.user
+            new_t.save()
             return redirect('learning_logs:topics')
 
     context = {'form': form}
