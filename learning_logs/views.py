@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.http import Http404
 from django.shortcuts import render, redirect
 
 from learning_logs.forms import TopicForm, EntryForm
@@ -18,6 +19,8 @@ def topics(request):
 @login_required
 def topic(request, topic_id):
     t = Topic.objects.get(id=topic_id)
+    if t.owner != request.user:
+        raise Http404
     entries = t.entry_set.order_by('-date_added')
     context = {'topic': t, 'entries': entries}
     return render(request, 'learning_logs/topic.html', context)
