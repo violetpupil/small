@@ -1,4 +1,7 @@
+import os
 from pathlib import Path
+
+from util.django import production_settings
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -91,3 +94,5 @@ LOGIN_URL = "/users/login"
 BOOTSTRAP3 = {
     "include_jquery": True,
 }
+
+os.getcwd() == "/app" and production_settings(locals())
