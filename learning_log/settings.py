@@ -96,6 +96,8 @@ BOOTSTRAP3 = {
     "include_jquery": True,
 }
 
+STATIC_ROOT = "staticfiles"
+
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 os.getcwd() == "/app" and production_settings(locals())
