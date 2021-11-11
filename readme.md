@@ -5,5 +5,5 @@ python manage.py runserver
 ```
 
 ```
-git push heroku learning:main
+git push heroku learning_log:main
 ```
