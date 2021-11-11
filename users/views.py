@@ -15,7 +15,7 @@ def register(request):
         form = UserCreationForm(data=request.POST)
         if form.is_valid():
             new_user = form.save()
-            login(request, authenticate(username=new_user.username, password=new_user.password))
+            login(request, authenticate(username=new_user.username, password=request.POST['password1']))
             return redirect('learning_logs:index')
 
     return render(request, 'users/register.html', {'form': form})
