@@ -1,7 +1,7 @@
 ```
-python -m manage makemigrations
-python -m manage migrate
-python -m manage runserver
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
 ```
 
 ```
