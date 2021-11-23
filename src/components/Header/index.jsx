@@ -1,6 +1,11 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 export default class Header extends React.Component {
+  static propTypes = {
+    addTodo: PropTypes.func.isRequired
+  }
+
   handleKeyUp = event => {
     const { key, target } = event
     if (key !== "Enter") return
