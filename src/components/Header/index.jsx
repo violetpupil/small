@@ -20,7 +20,7 @@ export default class Header extends React.Component {
   render() {
     return (
       <div>
-        <input onKeyUp={this.handleKeyUp} type="text" placeholder="enter content and press Enter to add" />
+        <input onKeyUp={this.handleKeyUp} type="text" placeholder="type and press enter to add" />
       </div>
     )
   }
