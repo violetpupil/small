@@ -6,7 +6,7 @@ export default class Footer extends React.Component {
       <div>
         <input />
         <span></span>
-        <button></button>
+        <button>clear done</button>
       </div>
     )
   }
