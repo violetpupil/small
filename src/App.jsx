@@ -6,8 +6,9 @@ import "./App.css"
 
 export default class App extends React.Component {
   state = { todoList: [] }
+  id = 0
 
-  addTodo = todo => this.setState({ todoList: [todo, ...this.state.todoList] })
+  addTodo = todo => this.setState({ todoList: [{ ...todo, id: this.id += 1 }, ...this.state.todoList] })
 
   render() {
     const { todoList } = this.state
