@@ -2,6 +2,15 @@ import React from 'react'
 
 export default class Item extends React.Component {
   render() {
-    return <h1>Hello, world!</h1>
+    const { name } = this.props
+    return (
+      <li>
+        <label>
+          <input />
+          <span>{name}</span>
+        </label>
+        <button>delete</button>
+      </li>
+    )
   }
 }
