@@ -7,7 +7,7 @@ export default class Footer extends React.Component {
     const total = todoList.length
     return (
       <div>
-        <input />
+        <input type="checkbox" />
         <span>{doneCount}/{total}</span>
         <button>clear done</button>
       </div>
