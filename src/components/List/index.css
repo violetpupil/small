@@ -4,6 +4,6 @@
   padding: 0;
 }
 
-.todo-main-empty {
+.todo-main:empty {
   border: none;
 }
