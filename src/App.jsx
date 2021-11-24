@@ -14,9 +14,11 @@ export default class App extends React.Component {
     const { todoList } = this.state
     return (
       <div className="todo-container">
-        <Header addTodo={this.addTodo} />
-        <List todoList={todoList} />
-        <Footer todoList={todoList} />
+        <div className='todo-wrap'>
+          <Header addTodo={this.addTodo} />
+          <List todoList={todoList} />
+          <Footer todoList={todoList} />
+        </div>
       </div>
     )
   }

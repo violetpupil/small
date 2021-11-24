@@ -2,3 +2,9 @@
   margin: 0 auto;
   width: 600px;
 }
+
+.todo-container .todo-wrap {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
