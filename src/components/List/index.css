@@ -1,0 +1,7 @@
+.todo-main {
+  border: 1px solid #ddd;
+}
+
+.todo-main-empty {
+  border: 0;
+}
