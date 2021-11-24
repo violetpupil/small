@@ -5,7 +5,7 @@ export default class List extends React.Component {
   render() {
     const { todoList } = this.props
     return (
-      <ul>
+      <ul className={"todo-main" + (todoList.length ? "" : " todo-main-empty")}>
         {
           todoList.map(todo => <Item key={todo.id} {...todo} />)
         }
