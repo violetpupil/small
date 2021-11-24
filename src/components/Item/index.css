@@ -9,3 +9,11 @@ li {
 li:last-child {
   border-bottom: none;
 }
+
+li label {
+  cursor: pointer;
+}
+
+li label input {
+  cursor: inherit;
+}
