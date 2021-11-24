@@ -6,7 +6,7 @@ export default class Item extends React.Component {
     return (
       <li>
         <label>
-          <input />
+          <input type="checkbox" />
           <span>{name}</span>
         </label>
         <button>delete</button>
