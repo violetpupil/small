@@ -6,8 +6,14 @@ export default class Item extends React.Component {
 
   handleMouse = flag => () => this.setState({ mouse: flag })
 
+  handleDelete = id => {
+    if (window.confirm("are you sure?")) {
+      this.props.deleteTodo(id)
+    }
+  }
+
   render() {
-    const { name } = this.props
+    const { id, name } = this.props
     const { mouse } = this.state
     return (
       <li
@@ -19,7 +25,10 @@ export default class Item extends React.Component {
           <input type="checkbox" />
           <span>{name}</span>
         </label>
-        <button style={{ display: mouse ? 'block' : 'none' }}>delete</button>
+        <button
+          onClick={() => this.handleDelete(id)}
+          style={{ display: mouse ? 'block' : 'none' }}
+        >delete</button>
       </li>
     )
   }

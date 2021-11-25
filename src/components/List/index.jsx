@@ -4,11 +4,11 @@ import "./index.css"
 
 export default class List extends React.Component {
   render() {
-    const { todoList } = this.props
+    const { todoList, deleteTodo } = this.props
     return (
       <ul className="todo-main">
         {
-          todoList.map(todo => <Item key={todo.id} {...todo} />)
+          todoList.map(todo => <Item key={todo.id} {...todo} deleteTodo={deleteTodo} />)
         }
       </ul>
     )
