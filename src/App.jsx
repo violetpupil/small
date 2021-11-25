@@ -19,6 +19,10 @@ export default class App extends React.Component {
 
   deleteTodo = id => this.setState({ todoList: this.state.todoList.filter(todo => todo.id !== id) })
 
+  checkAllTodo = done => this.setState({ todoList: this.state.todoList.map(todo => { return { ...todo, done } }) })
+
+  clearAllDone = () => this.setState({ todoList: this.state.todoList.filter(todo => !todo.done) })
+
   render() {
     const { todoList } = this.state
     return (
@@ -26,7 +30,7 @@ export default class App extends React.Component {
         <div className='todo-wrap'>
           <Header addTodo={this.addTodo} />
           <List todoList={todoList} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} />
-          <Footer todoList={todoList} />
+          <Footer todoList={todoList} checkAllTodo={this.checkAllTodo} clearAllDone={this.clearAllDone} />
         </div>
       </div>
     )
