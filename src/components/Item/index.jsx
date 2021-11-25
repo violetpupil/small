@@ -29,6 +29,7 @@ export default class Item extends React.Component {
         </label>
         <button
           onClick={() => this.handleDelete(id)}
+          className="btn btn-danger"
           style={{ display: mouse ? 'block' : 'none' }}
         >delete</button>
       </li>

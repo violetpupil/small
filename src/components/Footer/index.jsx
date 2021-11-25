@@ -18,7 +18,7 @@ export default class Footer extends React.Component {
           checked={doneCount === total && total !== 0}
         />
         <span>{doneCount}/{total}</span>
-        <button onClick={this.handleClearAllDone}>clear done</button>
+        <button onClick={this.handleClearAllDone} className="btn btn-danger">clear done</button>
       </div>
     )
   }
