@@ -21,4 +21,5 @@ li label input {
 
 li button {
   float: right;
+  margin-top: 3px;
 }
