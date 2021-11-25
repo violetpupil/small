@@ -12,8 +12,13 @@ li:last-child {
 
 li label {
   cursor: pointer;
+  float: left;
 }
 
 li label input {
   cursor: inherit;
+}
+
+li button {
+  float: right;
 }
