@@ -6,6 +6,8 @@ export default class Item extends React.Component {
 
   handleMouse = flag => () => this.setState({ mouse: flag })
 
+  handleCheck = id => event => this.props.updateTodo(id, event.target.checked)
+
   handleDelete = id => {
     if (window.confirm("are you sure?")) {
       this.props.deleteTodo(id)
@@ -13,7 +15,7 @@ export default class Item extends React.Component {
   }
 
   render() {
-    const { id, name } = this.props
+    const { id, name, done } = this.props
     const { mouse } = this.state
     return (
       <li
@@ -22,7 +24,7 @@ export default class Item extends React.Component {
         onMouseLeave={this.handleMouse(false)}
       >
         <label>
-          <input type="checkbox" />
+          <input type="checkbox" checked={done} onChange={this.handleCheck(id)} />
           <span>{name}</span>
         </label>
         <button
