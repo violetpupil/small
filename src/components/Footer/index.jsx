@@ -1,4 +1,5 @@
 import React from 'react'
+import "./index.css"
 
 export default class Footer extends React.Component {
   handleCheckAllTodo = event => this.props.checkAllTodo(event.target.checked)
@@ -10,7 +11,7 @@ export default class Footer extends React.Component {
     const doneCount = todoList.reduce((pre, todo) => pre + (todo.done ? 1 : 0), 0)
     const total = todoList.length
     return (
-      <div>
+      <div className="todo-footer">
         <input
           type="checkbox"
           onChange={this.handleCheckAllTodo}
