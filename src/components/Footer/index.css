@@ -1,6 +1,15 @@
 .todo-footer {
   height: 40px;
   line-height: 40px;
+  padding-left: 6px;
+}
+
+.todo-footer input {
+  cursor: pointer;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+  margin-right: 6px;
 }
 
 .todo-footer button {
